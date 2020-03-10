@@ -1,6 +1,6 @@
 # justdoit README
 
-This is the README for your extension "justdoit". After writing up a brief description, we recommend including the following sections.
+When you do not write code one minute, rage cat appear.
 
 ## Features
 

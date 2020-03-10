@@ -1,17 +1,20 @@
 import * as vscode from "vscode";
-let count: number = 0;
 
+let count: number = 0;
 export function activate(context: vscode.ExtensionContext) {
-  vscode.env.openExternal(vscode.Uri.parse("https://example.com"));
   setTimeout(countTime, 1000);
   let activeEditor = vscode.window.activeTextEditor;
   vscode.workspace.onDidChangeTextDocument(() => {
     if (count >= 60) {
-      count = 0;
       setTimeout(countTime, 1000);
-    } else {
-      count = 0;
     }
+    count = 0;
+  });
+  vscode.workspace.onDidCloseTextDocument(() => {
+    if (count >= 60) {
+      setTimeout(countTime, 1000);
+    }
+    count = 0;
   });
 }
 
