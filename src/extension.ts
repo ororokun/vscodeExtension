@@ -6,19 +6,15 @@ export function activate(context: vscode.ExtensionContext) {
   let activeEditor = vscode.window.activeTextEditor;
   vscode.workspace.onDidChangeTextDocument(() => {
     if (count >= 60) {
-      count = 0;
       setTimeout(countTime, 1000);
-    } else {
-      count = 0;
     }
+    count = 0;
   });
   vscode.workspace.onDidCloseTextDocument(() => {
     if (count >= 60) {
-      count = 0;
       setTimeout(countTime, 1000);
-    } else {
-      count = 0;
     }
+    count = 0;
   });
 }
 
@@ -38,7 +34,6 @@ function getWebviewContent() {
 
 let countTime = (): void => {
   count++;
-  console.log(count);
   if (count >= 60) {
     callMenor();
   } else {
